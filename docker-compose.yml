@@ -46,6 +46,16 @@ services:
     - influxdb
     networks:
     - app-network
+  mosquitto:
+          image: eclipse-mosquitto:latest
+    restart: always
+    volumes:
+    - ./src/mosquitto/conf:/mosquitto/conf/
+    networks:
+    - app-network
+    ports:
+    - "1883:1883"
+    - "9001:9001"
 volumes:
   influxdb-data:
     driver: local
