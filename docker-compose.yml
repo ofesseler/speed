@@ -47,7 +47,7 @@ services:
     networks:
     - app-network
   mosquitto:
-          image: eclipse-mosquitto:latest
+    image: eclipse-mosquitto:latest
     restart: always
     volumes:
     - ./src/mosquitto/conf:/mosquitto/conf/
