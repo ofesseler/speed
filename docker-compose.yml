@@ -26,6 +26,8 @@ services:
     - influxdb-data:/data
     networks:
     - app-network
+    ports:
+    - "8086:8086"
   grafana:
     build:
       context: ./src
