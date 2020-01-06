@@ -49,7 +49,7 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     current_time = datetime.datetime.utcnow().isoformat()
-    persists(measurement=shorten_topic(msg.topic), fields={"value": msg.payload}, time=current_time)
+    persists(measurement=shorten_topic(msg.topic), fields={"value": float(msg.payload)}, time=current_time)
 
 
 client = mqtt.Client()
