@@ -32,9 +32,13 @@ def persists(measurement, fields, time):
     }])
 
 
+def shorten_topic(topic_name):
+    return topic_name.split("/")[-1]
+
+
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
+    logging.info("Connected with result code "+str(rc))
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
@@ -44,9 +48,8 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
     current_time = datetime.datetime.utcnow().isoformat()
-    persists(measurement=msg.topic, fields={"value": msg.payload}, time=current_time)
+    persists(measurement=shorten_topic(msg.topic), fields={"value": msg.payload}, time=current_time)
 
 
 client = mqtt.Client()
