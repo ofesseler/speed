@@ -57,9 +57,16 @@ services:
     - "1883:1883"
     - "9001:9001"
   mqtt-to-influx:
+    image: pulli-mqtt
+    restart: always
+    volumes:
+      - ./src/mqtt_to_influx:/code/src
+    depends_on:
+      - influxdb
     build:
       context: ./src
       dockerfile: .docker/Dockerfile-mqtt-to-influx
+    command: ["python", "app.py"]
     networks:
       - app-network
 
