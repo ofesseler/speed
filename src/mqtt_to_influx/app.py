@@ -56,7 +56,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("192.168.0.52", 1883, 60)
+client.connect(os.getenv("MQTT_SERVER"), os.getenv("MQTT_PORT"), os.getenv("MQTT_TIMEOUT"))
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
