@@ -1,3 +1,14 @@
+## Install 
+1. node_mcu project 
+2. upgrade running configuration on raspi
+
+### update raspi
+- commit and push all changes
+- pull on raspi
+- `docker-compose build`
+- `docker-compose restart`
+- et voila
+
 ## Monitoring the bandwidth with Grafana, InfluxDB and Docker
 
 Time ago, when I was an ADSL user in my house I had a lot problems with my internet connection. I was a bit lazy to switch to a new fiber connection. Finally I changed it, but meanwhile the my Internet company was solving one incident, I started to hack a little bit a simple and dirty script that monitors my connection speed (just for fun and to practise with InfluxDB and Grafana).
