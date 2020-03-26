@@ -44,6 +44,8 @@ def on_connect(client, userdata, flags, rc):
     # reconnect then subscriptions will be renewed.
     client.subscribe("home/livingroom/temp")
     client.subscribe("home/livingroom/humidity")
+    client.subscribe("home/office/temp")
+    client.subscribe("home/office/humidity")
 
 
 # The callback for when a PUBLISH message is received from the server.
